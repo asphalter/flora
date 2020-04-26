@@ -1,3 +1,4 @@
+// #define DEBUG
 
 // array of different xiaomi flora MAC addresses
 char* FLORA_DEVICES[] = {
@@ -6,14 +7,22 @@ char* FLORA_DEVICES[] = {
     "C4:7C:8D:67:33:33"
 };
 
+// EEPROM size
+#define EEPROM_SIZE 64
+
+// Syslog server connection info
+#define SYSLOG_SERVER "10.1.0.20"
+#define SYSLOG_PORT 514
+#define DEVICE_HOSTNAME "floragw.knob.it"
+
 // sleep between to runs in seconds
-#define SLEEP_DURATION 30 * 60
-// emergency hibernate countdown in seconds
-#define EMERGENCY_HIBERNATE 3 * 60
+#define SLEEP_DURATION 3600
+// emergency hibernate countdown in seconds (30s is the time for BLE to timeout connect, we have to stay a little bit higher)
+#define EMERGENCY_HIBERNATE 32
 // how often should the battery be read - in run count
-#define BATTERY_INTERVAL 6
+#define BATTERY_INTERVAL 3
 // how often should a device be retried in a run when something fails
-#define RETRY 3
+#define RETRY 8
 
 const char*   WIFI_SSID       = "ssid";
 const char*   WIFI_PASSWORD   = "password";
